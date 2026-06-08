@@ -4,6 +4,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>채매평 — 골절 분류 AI</title>
+ <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0d0f14">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="골절분류AI">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -958,6 +965,15 @@ renderFractureGrid();
 renderPipeline();
 renderAugs();
 renderParams();
+</script>
+ <script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("sw.js")
+        .then(function (reg) { console.log("✅ SW 등록 성공:", reg.scope); })
+        .catch(function (err) { console.log("❌ SW 등록 실패:", err); });
+    });
+  }
 </script>
 </body>
 </html>
