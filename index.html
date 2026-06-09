@@ -52,7 +52,6 @@
     min-height: 100vh;
   }
 
-  /* ── NAVBAR ── */
   nav {
     position: sticky; top: 0; z-index: 100;
     background: rgba(13,15,20,0.92);
@@ -78,10 +77,8 @@
   }
   .nav-pill:hover, .nav-pill.active { background: var(--surface2); color: var(--text2); }
 
-  /* ── LAYOUT ── */
   .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
-  /* ── HERO ── */
   .hero {
     padding: 3.5rem 0 2.5rem;
     border-bottom: 0.5px solid var(--border);
@@ -116,7 +113,6 @@
   .htag.purple .dot { background: var(--purple); }
   .htag.teal .dot { background: var(--teal); }
 
-  /* ── STATS ROW ── */
   .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 2rem; }
   .stat-card {
     background: var(--surface);
@@ -137,7 +133,6 @@
   .stat-value { font-size: 28px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
   .stat-sub { font-size: 11px; color: var(--text3); margin-top: 3px; }
 
-  /* ── SECTION TITLE ── */
   .section-title {
     font-size: 11px; font-weight: 700; text-transform: uppercase;
     letter-spacing: 0.1em; color: var(--text3);
@@ -148,7 +143,6 @@
     content: ''; flex: 1; height: 0.5px; background: var(--border);
   }
 
-  /* ── UPLOAD ── */
   .upload-zone {
     border: 1.5px dashed var(--border2);
     border-radius: var(--radius-xl);
@@ -181,10 +175,8 @@
     border: 0.5px solid var(--border2); color: var(--text3);
   }
 
-  /* ── TWO COL ── */
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 2rem; }
 
-  /* ── PANEL ── */
   .panel {
     background: var(--surface); border: 0.5px solid var(--border);
     border-radius: var(--radius-lg); padding: 1.1rem 1.25rem;
@@ -204,7 +196,6 @@
   .status-dot.live { background: var(--green); box-shadow: 0 0 0 2px rgba(52,211,153,0.25); }
   .status-dot.pending { background: var(--amber); }
 
-  /* ── PREVIEW IMAGE ── */
   #preview-img {
     width: 100%; border-radius: 8px; display: block;
     background: var(--bg3);
@@ -212,7 +203,6 @@
   }
   .img-meta { font-size: 11px; color: var(--text3); margin-top: 8px; }
 
-  /* ── PREDICTION ── */
   .pred-main { text-align: center; padding: 1rem 0; }
   .pred-eyebrow { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3); margin-bottom: 6px; }
   .pred-type { font-size: 24px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
@@ -233,7 +223,6 @@
   .pred-mini-fill.top { background: var(--accent); }
   .pred-pct { font-size: 12px; color: var(--text2); width: 40px; text-align: right; }
 
-  /* ── TTA GRID ── */
   .tta-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 2rem; }
   .tta-card {
     background: var(--surface); border: 0.5px solid var(--border);
@@ -245,7 +234,6 @@
   .tta-bar { height: 3px; background: var(--bg3); border-radius: 2px; margin-top: 6px; }
   .tta-fill { height: 100%; border-radius: 2px; background: var(--accent); }
 
-  /* ── MODEL TABLE ── */
   .model-table-wrap {
     background: var(--surface); border: 0.5px solid var(--border);
     border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 2rem;
@@ -263,7 +251,6 @@
   .model-medal { font-size: 16px; }
   .model-name-cell strong { font-weight: 600; }
   .model-name-cell small { font-size: 11px; color: var(--text3); display: block; margin-top: 1px; }
-  .acc-wrap { }
   .acc-num { font-size: 13px; font-weight: 600; }
   .acc-num.best { color: var(--green); }
   .mini-bar { height: 3px; border-radius: 2px; background: var(--bg3); margin-top: 4px; }
@@ -276,7 +263,6 @@
   }
   .f1-badge { font-size: 12px; font-weight: 600; color: var(--purple); }
 
-  /* ── FRACTURE GRID ── */
   .fracture-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 0.5rem; }
   .frac-card {
     background: var(--surface); border: 0.5px solid var(--border);
@@ -293,7 +279,6 @@
   .sev-mod { background: rgba(251,191,36,0.12); color: var(--amber); }
   .sev-sev { background: rgba(248,113,113,0.12); color: var(--red); }
 
-  /* ── FRACTURE DETAIL ── */
   .frac-detail {
     background: var(--surface2); border: 0.5px solid var(--border2);
     border-radius: var(--radius-lg); padding: 1.25rem 1.5rem;
@@ -309,11 +294,9 @@
   .frac-close:hover { background: var(--surface); color: var(--text2); }
   .frac-desc { font-size: 13px; color: var(--text2); line-height: 1.7; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 0.5px solid var(--border); }
   .frac-meta-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-  .frac-meta-item { }
   .frac-meta-key { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text3); margin-bottom: 4px; }
   .frac-meta-val { font-size: 13px; font-weight: 500; color: var(--text); }
 
-  /* ── PIPELINE ── */
   .pipeline-scroll { overflow-x: auto; padding-bottom: 6px; margin-bottom: 1rem; }
   .pipeline-track { display: flex; align-items: center; gap: 0; min-width: max-content; }
   .pipe-step {
@@ -326,7 +309,6 @@
   .pipe-step-sub { font-size: 10px; color: var(--text3); margin-top: 2px; }
   .pipe-arrow { color: var(--text3); padding: 0 6px; font-size: 14px; flex-shrink: 0; }
 
-  /* ── PHASE CARDS ── */
   .phase-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 2rem; }
   .phase-card {
     background: var(--surface); border: 0.5px solid var(--border);
@@ -345,7 +327,6 @@
   .p1-tag { background: rgba(79,142,247,0.12); color: var(--accent); }
   .p2-tag { background: rgba(251,191,36,0.12); color: var(--amber); }
 
-  /* ── AUGMENTATION ── */
   .aug-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 2rem; }
   .aug-card {
     background: var(--surface); border: 0.5px solid var(--border);
@@ -361,7 +342,6 @@
   .aug-title { font-size: 12px; font-weight: 600; color: var(--text); }
   .aug-desc { font-size: 11px; color: var(--text3); margin-top: 2px; }
 
-  /* ── HYPERPARAMS ── */
   .param-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 2rem; }
   .param-card {
     background: var(--surface); border: 0.5px solid var(--border);
@@ -371,7 +351,6 @@
   .param-val { font-size: 18px; font-weight: 700; color: var(--text); letter-spacing: -0.01em; }
   .param-desc { font-size: 11px; color: var(--text3); margin-top: 3px; }
 
-  /* ── DEMO / EMPTY STATE ── */
   .empty-state {
     background: var(--surface); border: 0.5px solid var(--border);
     border-radius: var(--radius-lg); padding: 2.5rem; text-align: center;
@@ -390,7 +369,6 @@
   }
   .demo-btn:hover { background: var(--accent2); }
 
-  /* ── FOOTER ── */
   footer {
     border-top: 0.5px solid var(--border);
     padding: 1.5rem 2rem;
@@ -407,7 +385,6 @@
     font-family: var(--mono);
   }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     nav { padding: 0 1rem; }
     .container { padding: 0 1rem; }
@@ -424,52 +401,6 @@
     .nav-pills { display: none; }
   }
 
-  /* ── BBOX ANNOTATION ── */
-  .bbox-label {
-    position: absolute;
-    background: rgba(239,68,68,0.92);
-    color: #fff;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 6px;
-    border-radius: 3px 3px 3px 0;
-    letter-spacing: 0.04em;
-    white-space: nowrap;
-    line-height: 1.4;
-    pointer-events: none;
-    font-family: var(--mono);
-  }
-  .bbox-rect {
-    position: absolute;
-    border: 2px solid #ef4444;
-    border-radius: 3px;
-    pointer-events: none;
-    box-shadow: 0 0 0 1px rgba(239,68,68,0.25), inset 0 0 0 1px rgba(239,68,68,0.1);
-    animation: bboxPulse 2s ease-in-out infinite;
-  }
-  .bbox-rect::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(239,68,68,0.07);
-    border-radius: 2px;
-  }
-  .bbox-corner {
-    position: absolute;
-    width: 8px; height: 8px;
-    border-color: #ef4444;
-    border-style: solid;
-  }
-  .bbox-corner.tl { top: -2px; left: -2px; border-width: 2px 0 0 2px; }
-  .bbox-corner.tr { top: -2px; right: -2px; border-width: 2px 2px 0 0; }
-  .bbox-corner.bl { bottom: -2px; left: -2px; border-width: 0 0 2px 2px; }
-  .bbox-corner.br { bottom: -2px; right: -2px; border-width: 0 2px 2px 0; }
-  @keyframes bboxPulse {
-    0%, 100% { box-shadow: 0 0 0 1px rgba(239,68,68,0.25), inset 0 0 0 1px rgba(239,68,68,0.1); }
-    50% { box-shadow: 0 0 8px 2px rgba(239,68,68,0.4), inset 0 0 0 1px rgba(239,68,68,0.15); }
-  }
-
-  /* ── SCROLLBAR ── */
   ::-webkit-scrollbar { width: 6px; height: 6px; }
   ::-webkit-scrollbar-track { background: var(--bg2); }
   ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
@@ -477,7 +408,6 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav>
   <div class="nav-logo">
     <span class="nav-logo-badge">채매평</span>
@@ -494,7 +424,6 @@
 
 <div class="container">
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-eyebrow">
       <span class="eyebrow-badge">골절 분류 AI</span>
@@ -515,7 +444,6 @@
     </div>
   </section>
 
-  <!-- STATS -->
   <div class="stats-row">
     <div class="stat-card blue">
       <div class="stat-label">분류 유형</div>
@@ -539,11 +467,9 @@
     </div>
   </div>
 
-  <!-- CLASSIFY SECTION -->
   <section id="s-classify">
     <div class="section-title">X-ray 이미지 분류</div>
 
-    <!-- Upload -->
     <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()">
       <input type="file" id="file-input" accept="image/*" onchange="handleFile(this.files[0])">
       <div class="upload-icon-wrap">📤</div>
@@ -559,7 +485,6 @@
       </div>
     </div>
 
-    <!-- Empty state -->
     <div class="empty-state" id="empty-state">
       <div class="empty-icon">🔬</div>
       <div class="empty-title">분류 결과가 여기에 표시됩니다</div>
@@ -567,10 +492,8 @@
       <button class="demo-btn" onclick="runDemo()">▶ 데모 시뮬레이션 실행</button>
     </div>
 
-    <!-- Results (hidden until image or demo) -->
     <div id="result-area" style="display:none">
 
-      <!-- Image + Main prediction -->
       <div class="two-col" style="margin-top:1.5rem">
         <div class="panel">
           <div class="panel-head">
@@ -613,14 +536,12 @@
         </div>
       </div>
 
-      <!-- TTA detail -->
       <div class="section-title">TTA 5× 앙상블 — 각 증강별 개별 예측</div>
       <div class="tta-grid" id="tta-grid"></div>
 
     </div>
   </section>
 
-  <!-- MODEL COMPARISON -->
   <section id="s-models">
     <div class="section-title">5개 모델 성능 비교</div>
     <div class="model-table-wrap">
@@ -641,7 +562,6 @@
     </div>
   </section>
 
-  <!-- FRACTURE TYPES -->
   <section id="s-types">
     <div class="section-title">분류 가능한 골절 유형 (10종)</div>
     <div class="fracture-grid" id="fracture-grid"></div>
@@ -658,7 +578,6 @@
     </div>
   </section>
 
-  <!-- PIPELINE -->
   <div class="section-title">학습 파이프라인</div>
   <div class="pipeline-scroll">
     <div class="pipeline-track" id="pipeline-track"></div>
@@ -695,11 +614,9 @@
     </div>
   </div>
 
-  <!-- AUGMENTATION -->
   <div class="section-title">데이터 증강 전략 (TTA 포함)</div>
   <div class="aug-grid" id="aug-grid"></div>
 
-  <!-- HYPERPARAMS -->
   <section id="s-params">
     <div class="section-title">하이퍼파라미터 설정</div>
     <div class="param-grid" id="param-grid"></div>
@@ -707,7 +624,6 @@
 
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-left">
     <strong>채매평</strong> — 골절 분류 AI 평가 시스템 · Progressive Fine-Tuning + AMP + TTA
@@ -873,6 +789,7 @@ function renderParams() {
   ).join("");
 }
 
+// ===== 修复版: 图片读取 (兼容 HEIC、错误提示) =====
 function handleFile(file) {
   if (!file) return;
   const nameLower = (file.name || "").toLowerCase();
@@ -903,39 +820,49 @@ function showImageError(msg) {
   document.getElementById("empty-state").style.display = "none";
   document.getElementById("result-area").style.display = "block";
   const meta = document.getElementById("img-meta");
-  if (meta) meta.innerHTML = '<span style="color:#f87171">\u26a0 ' + msg + '</span>';
+  if (meta) meta.innerHTML = '<span style="color:#f87171">⚠ ' + msg + '</span>';
   const canvas = document.getElementById("preview-canvas");
   if (canvas) {
     const ctx = canvas.getContext("2d");
     canvas.width = 400; canvas.height = 200;
     ctx.fillStyle = "#1a1e28"; ctx.fillRect(0,0,400,200);
     ctx.fillStyle = "#f87171"; ctx.font = "16px sans-serif"; ctx.textAlign = "center";
-    ctx.fillText("\u26a0 image error", 200, 100);
+    ctx.fillText("⚠ image error", 200, 100);
   }
 }
+
 function showResults(img) {
   document.getElementById("empty-state").style.display = "none";
   document.getElementById("result-area").style.display = "block";
-  
+
+  // ===== 修复版: 自动缩放大图,避免 iOS canvas 渲染失败 =====
   const canvas = document.getElementById("preview-canvas");
   const ctx = canvas.getContext("2d");
-  canvas.width = img.width;
-  canvas.height = img.height;
-  ctx.drawImage(img, 0, 0);
-  
+  const MAX = 1000;
+  let w = img.naturalWidth || img.width;
+  let h = img.naturalHeight || img.height;
+  let scale = Math.min(1, MAX / Math.max(w, h));
+  canvas.width = Math.round(w * scale);
+  canvas.height = Math.round(h * scale);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+  const meta = document.getElementById("img-meta");
+  if (meta) meta.textContent = w + " × " + h + " px";
+
   const pred = FRACTURES[Math.floor(Math.random() * FRACTURES.length)];
   const conf = 90 + Math.random() * 5;
-  
+
   document.getElementById("pred-type").textContent = pred.en;
   document.getElementById("pred-kr").textContent = pred.kr;
   document.getElementById("conf-pct").textContent = conf.toFixed(1) + "%";
   document.getElementById("conf-fill").style.width = conf + "%";
-  
+
   const top5Preds = MODELS.map(m => ({
     name: m.name,
     conf: Math.random() * 100
   })).sort((a, b) => b.conf - a.conf).slice(0, 5);
-  
+
   document.getElementById("top5-list").innerHTML = top5Preds.map((p, i) =>
     `<div class="pred-row">
       <div class="pred-rank">${i+1}</div>
@@ -944,7 +871,7 @@ function showResults(img) {
       <div class="pred-pct">${p.conf.toFixed(1)}%</div>
     </div>`
   ).join("");
-  
+
   document.getElementById("tta-grid").innerHTML = TTA_AUGS.map((aug, i) =>
     `<div class="tta-card">
       <div class="tta-aug">${aug}</div>
@@ -966,7 +893,7 @@ function runDemo() {
   ctx.font = "20px Arial";
   ctx.textAlign = "center";
   ctx.fillText("Demo X-ray Image", 150, 150);
-  
+
   const img = new Image();
   img.onload = () => showResults(img);
   img.src = canvas.toDataURL();
@@ -993,7 +920,7 @@ renderPipeline();
 renderAugs();
 renderParams();
 </script>
- <script>
+<script>
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", function () {
       navigator.serviceWorker.register("sw.js")
