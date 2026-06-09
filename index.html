@@ -503,7 +503,7 @@
             </div>
           </div>
           <div style="position:relative;display:inline-block;width:100%;">
-            <canvas id="preview-canvas" style="width:100%;border-radius:8px;display:block;background:var(--bg3);min-height:180px;"></canvas>
+            <img id="preview-img" alt="uploaded" style="width:100%;border-radius:8px;display:block;background:var(--bg3);min-height:180px;object-fit:contain;" />
             <div id="bbox-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"></div>
           </div>
           <div class="img-meta" id="img-meta"></div>
@@ -789,29 +789,25 @@ function renderParams() {
   ).join("");
 }
 
-// ===== 修复版: 图片读取 (兼容 HEIC、错误提示) =====
+// ===== iOS 안정 버전: <img> 태그로 직접 표시 (canvas 미사용) =====
 function handleFile(file) {
   if (!file) return;
-  const nameLower = (file.name || "").toLowerCase();
-  const isHeic = nameLower.endsWith(".heic") || nameLower.endsWith(".heif") ||
-                 file.type === "image/heic" || file.type === "image/heif";
-
   const reader = new FileReader();
   reader.onerror = () => showImageError("파일을 읽을 수 없습니다 (无法读取文件)");
   reader.onload = (e) => {
-    const img = new Image();
-    img.onload = () => {
-      try { showResults(img); }
+    const dataUrl = e.target.result;
+    const imgEl = document.getElementById("preview-img");
+    if (!imgEl) return;
+    imgEl.onload = () => {
+      try { showResults(imgEl); }
       catch (err) { showImageError("이미지 처리 오류: " + err.message); }
     };
-    img.onerror = () => {
-      if (isHeic) {
-        showImageError("HEIC 형식은 iPhone Safari에서 표시되지 않습니다. JPG로 변환 후 업로드하세요. (HEIC格式无法显示，请转成JPG)");
-      } else {
-        showImageError("이미지를 불러올 수 없습니다 (无法加载图片)");
-      }
+    imgEl.onerror = () => {
+      showImageError("이미지를 표시할 수 없습니다. JPG 또는 PNG로 변환 후 다시 시도하세요. (无法显示，请转成JPG/PNG)");
     };
-    img.src = e.target.result;
+    document.getElementById("empty-state").style.display = "none";
+    document.getElementById("result-area").style.display = "block";
+    imgEl.src = dataUrl;
   };
   reader.readAsDataURL(file);
 }
@@ -821,34 +817,16 @@ function showImageError(msg) {
   document.getElementById("result-area").style.display = "block";
   const meta = document.getElementById("img-meta");
   if (meta) meta.innerHTML = '<span style="color:#f87171">⚠ ' + msg + '</span>';
-  const canvas = document.getElementById("preview-canvas");
-  if (canvas) {
-    const ctx = canvas.getContext("2d");
-    canvas.width = 400; canvas.height = 200;
-    ctx.fillStyle = "#1a1e28"; ctx.fillRect(0,0,400,200);
-    ctx.fillStyle = "#f87171"; ctx.font = "16px sans-serif"; ctx.textAlign = "center";
-    ctx.fillText("⚠ image error", 200, 100);
-  }
 }
 
 function showResults(img) {
   document.getElementById("empty-state").style.display = "none";
   document.getElementById("result-area").style.display = "block";
 
-  // ===== 修复版: 自动缩放大图,避免 iOS canvas 渲染失败 =====
-  const canvas = document.getElementById("preview-canvas");
-  const ctx = canvas.getContext("2d");
-  const MAX = 1000;
-  let w = img.naturalWidth || img.width;
-  let h = img.naturalHeight || img.height;
-  let scale = Math.min(1, MAX / Math.max(w, h));
-  canvas.width = Math.round(w * scale);
-  canvas.height = Math.round(h * scale);
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
+  const w = (img && (img.naturalWidth || img.width)) || 0;
+  const h = (img && (img.naturalHeight || img.height)) || 0;
   const meta = document.getElementById("img-meta");
-  if (meta) meta.textContent = w + " × " + h + " px";
+  if (meta) meta.textContent = (w && h) ? (w + " × " + h + " px") : "이미지 표시됨";
 
   const pred = FRACTURES[Math.floor(Math.random() * FRACTURES.length)];
   const conf = 90 + Math.random() * 5;
@@ -894,9 +872,11 @@ function runDemo() {
   ctx.textAlign = "center";
   ctx.fillText("Demo X-ray Image", 150, 150);
 
-  const img = new Image();
-  img.onload = () => showResults(img);
-  img.src = canvas.toDataURL();
+  const imgEl = document.getElementById("preview-img");
+  document.getElementById("empty-state").style.display = "none";
+  document.getElementById("result-area").style.display = "block";
+  imgEl.onload = () => showResults(imgEl);
+  imgEl.src = canvas.toDataURL();
 }
 
 document.getElementById("upload-zone").addEventListener("dragover", (e) => {
