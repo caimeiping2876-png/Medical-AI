@@ -789,27 +789,35 @@ function renderParams() {
   ).join("");
 }
 
-// ===== iOS 안정 버전: <img> 태그로 직접 표시 (canvas 미사용) =====
+// ===== iOS 안정 버전 v2: createObjectURL 사용 (큰 사진도 안정적) =====
 function handleFile(file) {
   if (!file) return;
-  const reader = new FileReader();
-  reader.onerror = () => showImageError("파일을 읽을 수 없습니다 (无法读取文件)");
-  reader.onload = (e) => {
-    const dataUrl = e.target.result;
-    const imgEl = document.getElementById("preview-img");
-    if (!imgEl) return;
-    imgEl.onload = () => {
-      try { showResults(imgEl); }
-      catch (err) { showImageError("이미지 처리 오류: " + err.message); }
-    };
-    imgEl.onerror = () => {
-      showImageError("이미지를 표시할 수 없습니다. JPG 또는 PNG로 변환 후 다시 시도하세요. (无法显示，请转成JPG/PNG)");
-    };
-    document.getElementById("empty-state").style.display = "none";
-    document.getElementById("result-area").style.display = "block";
-    imgEl.src = dataUrl;
+  const imgEl = document.getElementById("preview-img");
+  if (!imgEl) return;
+
+  // 결과 영역 먼저 표시
+  document.getElementById("empty-state").style.display = "none";
+  document.getElementById("result-area").style.display = "block";
+
+  let objectUrl = null;
+  try {
+    objectUrl = URL.createObjectURL(file);
+  } catch (err) {
+    showImageError("파일을 열 수 없습니다 (无法打开文件): " + err.message);
+    return;
+  }
+
+  imgEl.onload = () => {
+    try { showResults(imgEl); }
+    catch (err) { showImageError("이미지 처리 오류: " + err.message); }
+    // 메모리 해제 (표시 후)
+    if (objectUrl) { try { URL.revokeObjectURL(objectUrl); } catch(e){} }
   };
-  reader.readAsDataURL(file);
+  imgEl.onerror = () => {
+    showImageError("이미지를 표시할 수 없습니다. HEIC라면 JPG로 변환 후 다시 시도하세요. (无法显示，HEIC请转JPG)");
+    if (objectUrl) { try { URL.revokeObjectURL(objectUrl); } catch(e){} }
+  };
+  imgEl.src = objectUrl;
 }
 
 function showImageError(msg) {
