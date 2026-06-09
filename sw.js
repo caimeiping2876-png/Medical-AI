@@ -1,6 +1,6 @@
 // Service Worker — 채매평 골절 분류 AI
 // 버전을 올리면(예: v1 → v2) 사용자 기기의 캐시가 자동으로 갱신됩니다.
-const CACHE_NAME = "fracture-ai-v3";
+const CACHE_NAME = "fracture-ai-v4";
 
 // 오프라인에서도 열리도록 미리 저장할 파일 목록
 const PRECACHE_URLS = [
