@@ -875,17 +875,44 @@ function renderParams() {
 
 function handleFile(file) {
   if (!file) return;
+  const nameLower = (file.name || "").toLowerCase();
+  const isHeic = nameLower.endsWith(".heic") || nameLower.endsWith(".heif") ||
+                 file.type === "image/heic" || file.type === "image/heif";
+
   const reader = new FileReader();
+  reader.onerror = () => showImageError("파일을 읽을 수 없습니다 (无法读取文件)");
   reader.onload = (e) => {
     const img = new Image();
     img.onload = () => {
-      showResults(img);
+      try { showResults(img); }
+      catch (err) { showImageError("이미지 처리 오류: " + err.message); }
+    };
+    img.onerror = () => {
+      if (isHeic) {
+        showImageError("HEIC 형식은 iPhone Safari에서 표시되지 않습니다. JPG로 변환 후 업로드하세요. (HEIC格式无法显示，请转成JPG)");
+      } else {
+        showImageError("이미지를 불러올 수 없습니다 (无法加载图片)");
+      }
     };
     img.src = e.target.result;
   };
   reader.readAsDataURL(file);
 }
 
+function showImageError(msg) {
+  document.getElementById("empty-state").style.display = "none";
+  document.getElementById("result-area").style.display = "block";
+  const meta = document.getElementById("img-meta");
+  if (meta) meta.innerHTML = '<span style="color:#f87171">\u26a0 ' + msg + '</span>';
+  const canvas = document.getElementById("preview-canvas");
+  if (canvas) {
+    const ctx = canvas.getContext("2d");
+    canvas.width = 400; canvas.height = 200;
+    ctx.fillStyle = "#1a1e28"; ctx.fillRect(0,0,400,200);
+    ctx.fillStyle = "#f87171"; ctx.font = "16px sans-serif"; ctx.textAlign = "center";
+    ctx.fillText("\u26a0 image error", 200, 100);
+  }
+}
 function showResults(img) {
   document.getElementById("empty-state").style.display = "none";
   document.getElementById("result-area").style.display = "block";
